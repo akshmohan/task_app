@@ -1,26 +1,25 @@
 // ignore_for_file: implementation_imports, unnecessary_import, unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:frontend/features/auth/pages/login_page.dart';
+import 'package:frontend/features/auth/pages/signup_page.dart';
 
-class SignupPage extends StatefulWidget {
-  static MaterialPageRoute route() =>
-      MaterialPageRoute(builder: (context) => const SignupPage());
+class LoginPage extends StatefulWidget {
 
-  const SignupPage({super.key});
+   static MaterialPageRoute route() => MaterialPageRoute(builder: (context) => const LoginPage());
+
+
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
-
   final formKey = GlobalKey<FormState>();
 
-  void signupUser() {
+  void loginUser() {
     if (formKey.currentState!.validate()) {}
   }
 
@@ -28,7 +27,7 @@ class _SignupPageState extends State<SignupPage> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
+
     super.dispose();
   }
 
@@ -43,24 +42,11 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Sign Up.",
+              "Login.",
               style: TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
               ),
-            ),
-            TextFormField(
-              controller: nameController,
-              decoration: InputDecoration(
-                hintText: "Name",
-              ),
-              validator: (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return "Name field cannot be empty!";
-                } else {
-                  return null;
-                }
-              },
             ),
             const SizedBox(height: 15),
             TextFormField(
@@ -96,22 +82,24 @@ class _SignupPageState extends State<SignupPage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: signupUser,
+              onPressed: loginUser,
               child: Text(
-                "SIGN UP",
+                "LOGIN",
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
             SizedBox(height: 20),
             GestureDetector(
-              onTap: () => Navigator.of(context).push(LoginPage.route()),
+              onTap: () {
+                Navigator.of(context).push(SignupPage.route());
+              },
               child: RichText(
                 text: TextSpan(
-                  text: "Already have an account? ",
+                  text: "Don't have an account? ",
                   style: Theme.of(context).textTheme.titleMedium,
                   children: [
                     TextSpan(
-                      text: "Login",
+                      text: "Sign Up",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,

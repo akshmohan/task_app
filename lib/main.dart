@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:frontend/features/auth/pages/signup_page.dart';
+import 'package:frontend/features/auth/pages/login_page.dart';
+// import 'package:frontend/features/auth/pages/signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
                 ))),
         primarySwatch: Colors.blue,
       ),
-      home: const SignupPage(),
+      home: const LoginPage(),
     );
   }
 }
